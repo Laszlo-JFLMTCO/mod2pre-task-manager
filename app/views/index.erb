@@ -1,6 +1,30 @@
-<h1>All Tasks</h1>
+<div class = "row col-md-offset-1 col-md-10">
+  <h1 class = "text-center">All Tasks</h1>
 
-<% @tasks.each do |task| %>
-  <h3><a href = "/tasks/<%= task.id %>"><%= task.title %></a></h3>
-  <p><%= task.description %></p>
-<% end %>
+  <table class = "table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Task</th>
+      <th>Description</th>
+      <th class = "text-right">Action</th>
+      <th></th>
+    </tr>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><a href = "/tasks/<%= task.id %>"><%= task.id %></a></td>
+        <td><%= task.title %></td>
+        <td><%= task.description %></td>
+        <td><a class = "btn btn-default" href = "/tasks/<%= task.id %>/edit">Edit</a></td>
+        <td>
+          <form action = "/tasks/<%= task.id %>" method = "post">
+            <input type = "hidden" name = "_method" value = "DELETE">
+            <input class = "btn btn-default" type = "submit" value = "Delete">
+          </form>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <div class = "text-center">
+    <a class = "btn btn-default" href="/">Dashboard</a>
+  </div>
+</div>

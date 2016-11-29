@@ -1,18 +1,19 @@
-<form class = "form-horizontal" action = "/tasks" method = "post">
-  <h2 class = "text-center">Add a new Task</h2>
+<form class = "form-horizontal" action = "/tasks/<%= @task.id %>" method = "post">
+  <h2 class = "text-center">Edit</h2>
   <div class = "form-group">
     <label class = "col-md-3 control-label">Enter a new task:</label>
     <div class = "col-md-9">
-      <input class = "form-control" type = "text" name = "task[title]" /><br/>
+      <input class = "form-control" type = "text" name = "task[title]" value = "<%= @task.title %>" /><br/>
     </div>
   </div>
   <div class = "form-group">
     <label class = "col-md-3 control-label">Description</label>
     <div class = "col-md-9">
-      <textarea class = "form-control" name = "task[description]"></textarea><br/>
+      <textarea class = "form-control" name = "task[description]"><%= @task.description %></textarea><br/>
     </div>
   </div>
   <div class = "col-md-offset-2 col-md-8 text-center">
+    <input type = "hidden" name = "_method" value = "PUT">
     <input class = "btn btn-default" type = "submit" />
     <a class = "btn btn-default" href="/">Dashboard</a>
   </div>
